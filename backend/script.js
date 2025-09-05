@@ -15,11 +15,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URL
 
+// trust proxy (needed for secure cookies on Render)
+app.set("trust proxy", 1);
+
+
 // Middleware
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors({
-  origin: "http://localhost:5500",
+  origin: "https://todo-boi.vercel.app",
   credentials: true,
 }));
 app.use(express.json());
