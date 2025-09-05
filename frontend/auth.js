@@ -1,4 +1,4 @@
-const SERVER = "http://localhost:5000"
+const SERVER = "https://todo-expressjs-api.onrender.com"
 
 async function signup(){
     const username = document.getElementById("username").value

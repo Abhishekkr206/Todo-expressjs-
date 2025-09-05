@@ -4,7 +4,7 @@ const fblist = document.getElementById("fblist")
 const showTasks = document.getElementById("showTasks")
 const loginbtn = document.getElementById("logout")
 
-const SERVER = "http://localhost:5000"
+const SERVER = "https://todo-expressjs-api.onrender.com"
 
 //Add task
 fbform.addEventListener("submit", async (e)=>{
