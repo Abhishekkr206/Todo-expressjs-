@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List 📝</h1>
+        <button id="logout" onclick="logout()">Logout</button>
+        <form id="fbform">
+            <input type="text" id="topic" placeholder="Enter a new task..." required>
+            <textarea id="message" placeholder="Add a description... (optional)"></textarea>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <div class="task-list-section">
+            <h2 class="task-list-heading">All Tasks</h2>
+            <ul id="fblist"></ul>
+            <button id="showTasks">Show All Tasks</button>
+        </div>
+
+        <p id="fbmessage"></p>
+    </div>
+
+    <script src='server.js'></script>
+</body>
+</html>

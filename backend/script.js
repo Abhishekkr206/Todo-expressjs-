@@ -1,0 +1,41 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
+const morgan = require("morgan");
+const authRoute = require("./routes/auth.js");
+const taskRoute = require("./routes/task.js");
+
+require("dotenv").config();
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+console.log("PORT:", process.env.PORT);
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(helmet());
+app.use(morgan("dev"));
+app.use(cors({
+  origin: [
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:3000"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+  exposedHeaders: ["Set-Cookie"]
+}));
+app.use(express.json());
+app.use(cookieParser());
+
+// Routes
+app.use("/auth", authRoute);
+app.use("/tasks", taskRoute);
+
+// MongoDB connection
+mongoose.connect('mongodb://127.0.0.1:27017/todoApp', { useNewUrlParser:true, useUnifiedTopology:true })
+  .then(()=>app.listen(PORT, ()=>console.log(`Server running on port ${PORT}`)))
+  .catch(err=>console.log(err));

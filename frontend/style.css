@@ -1,0 +1,186 @@
+/* --- General Styles --- */
+body {
+    font-family: sans-serif;
+    background-color: #f4f7f6; /* A very light gray-blue */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+#logout{
+    background: red;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+h1 {
+    color: #4a4a4a;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* --- Form Styles --- */
+#fbform {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#topic, #message {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+#topic::placeholder, #message::placeholder {
+    color: #aaa;
+}
+
+#topic:focus, #message:focus {
+    border-color: #4CAF50; /* A nice green on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+#message {
+    resize: vertical; /* Allows the user to resize the textarea */
+    min-height: 80px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* --- Task List Section --- */
+.task-list-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.task-list-heading {
+    color: #555;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+#lidiv{
+    display: flex;
+    gap: 5px;
+}
+
+#fblist {
+    list-style-type: none;
+    padding: 0;
+}
+
+#fblist li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+#fblist li p{
+    width:max-content;
+    scrollbar-width: none;
+    overflow-x: scroll;
+}
+
+#fblist li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease-in-out;
+}
+
+#fblist .task-text {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+#fblist .task-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+#editBtn{
+    background-color: #338be9;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+/* A general style for buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Specific style for the "Show All Tasks" button */
+#showTasks {
+    background-color: #6c757d;
+    margin-top: 15px;
+    padding: 10px 18px;
+}
+
+#showTasks:hover {
+    background-color: #5a6268;
+}
+
+#fbmessage {
+    margin-top: 20px;
+    font-style: italic;
+    color: #888;
+}

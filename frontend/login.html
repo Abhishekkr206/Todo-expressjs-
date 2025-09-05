@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0fdf4; /* soft greenish-white */
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 380px;
+            padding: 50px 35px;
+            background-color: #ffffff; /* 80% white */
+            border-radius: 14px;
+            box-shadow: 0 12px 25px rgba(0, 128, 0, 0.15);
+            border-top: 7px solid #28a745; /* 20% green accent */
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 35px;
+            color: #28a745;
+            font-size: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: red;
+            min-height: 20px;
+        }
+
+        .link {
+            margin-top: 25px;
+            display: block;
+            font-size: 15px;
+            color: #28a745;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .link:hover {
+            color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="message"></p>
+        <a href="index.html" class="link">Don't have an account? Signup</a>
+    </div>
+</body>
+<script src='auth.js'></script>
+</html>
