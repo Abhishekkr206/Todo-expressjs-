@@ -1,9 +1,11 @@
+const SERVER = "http://localhost:5000"
+
 async function signup(){
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
     const prtMessage = document.getElementById("message")
 
-    const res = await fetch("http://localhost:5000/auth/signup" , {
+    const res = await fetch(`${SERVER}/auth/signup` , {
         method:"POST",
         headers:{"Content-Type": "application/json"},
         credentials: "include",
@@ -23,7 +25,7 @@ async function login(){
     const password = document.getElementById("password").value
     const prtMessage = document.getElementById("message")
 
-    const res = await fetch("http://localhost:5000/auth/login" , {
+    const res = await fetch(`${SERVER}/auth/login` , {
         method:"POST",
         headers:{"Content-Type": "application/json"},
         credentials:"include",

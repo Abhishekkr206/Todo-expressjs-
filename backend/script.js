@@ -13,20 +13,14 @@ console.log("PORT:", process.env.PORT);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const MONGO_URL = process.env.MONGO_URL
 
 // Middleware
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors({
-  origin: [
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "http://localhost:3000"
-  ],
+  origin: "http://localhost:5500",
   credentials: true,
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-  exposedHeaders: ["Set-Cookie"]
 }));
 app.use(express.json());
 app.use(cookieParser());
@@ -36,6 +30,6 @@ app.use("/auth", authRoute);
 app.use("/tasks", taskRoute);
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/todoApp', { useNewUrlParser:true, useUnifiedTopology:true })
+mongoose.connect(MONGO_URL, { useNewUrlParser:true, useUnifiedTopology:true })
   .then(()=>app.listen(PORT, ()=>console.log(`Server running on port ${PORT}`)))
   .catch(err=>console.log(err));

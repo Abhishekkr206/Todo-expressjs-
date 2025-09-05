@@ -2,6 +2,9 @@ const fbform = document.getElementById("fbform")
 const fbpara = document.getElementById("fbmessage")
 const fblist = document.getElementById("fblist")
 const showTasks = document.getElementById("showTasks")
+const loginbtn = document.getElementById("logout")
+
+const SERVER = "http://localhost:5000"
 
 //Add task
 fbform.addEventListener("submit", async (e)=>{
@@ -20,7 +23,7 @@ fbform.addEventListener("submit", async (e)=>{
         const id = Date.now()
         console.log("Adding task:", {id, task, message})
 
-        const res = await fetch("http://localhost:5000/tasks/todo", {
+        const res = await fetch(`${SERVER}/tasks/todo`, {
             method:"POST",
             headers:{"Content-Type": "application/json"},
             credentials:"include",
@@ -50,15 +53,17 @@ const lodeTask = async (skipMessage = false) => {
     try{
         console.log("Loading tasks...")
         
-        const res = await fetch("http://localhost:5000/tasks/todo", {
+        const res = await fetch(`${SERVER}/tasks/todo`, {
             credentials:"include"
         })
         
         console.log("Load tasks response status:", res.status)
         
-        if(res.status === 400) {
+        if(res.status === 401) {
             const errorData = await res.json()
             if(errorData.message === "No token") {
+                loginbtn.textContent = "Login"
+                loginbtn.style.backgroundColor = "green"
                 if (!skipMessage) fbpara.textContent = "Please log in to view tasks"
                 return
             }
@@ -124,7 +129,7 @@ async function deleteTask(id){
     try{
         console.log("Deleting task:", id)
         
-        const res = await fetch(`http://localhost:5000/tasks/todo/${id}`, {
+        const res = await fetch(`${SERVER}/tasks/todo/${id}`, {
             method:"DELETE",
             credentials:"include"
         })
@@ -160,7 +165,7 @@ async function EditTask(task){
     try{
         console.log("Editing task:", task.id)
         
-        const res = await fetch(`http://localhost:5000/tasks/todo/${task.id}`, {
+        const res = await fetch(`${SERVER}/tasks/todo/${task.id}`, {
             method:"PATCH",
             headers:{"Content-Type": "application/json"},
             credentials:"include",
@@ -192,7 +197,7 @@ lodeTask(true)
 
 // logout
 async function logout(){
-    fetch("http://localhost:5000/auth/logout",{
+    fetch(`${SERVER}/auth/logout`,{
         method:"POST",
         credentials:"include"
     })
